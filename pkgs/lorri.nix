@@ -15,5 +15,5 @@ in
     # this package does not build well in CI! I'm not sure why, so I'm marking
     # it as a local build for now. It's rolling-release software anyway, and I'm
     # sure they'll be adding it upstream.
-    preferLocalBuild = true;
+    meta.experimental = true;
   })

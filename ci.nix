@@ -3,6 +3,7 @@
 # so if you correctly mark packages as
 #
 # - broken (using `meta.broken`),
+# - experimental (using `meta.experimental`),
 # - unfree (using `meta.license.free`), and
 # - locally built (using `preferLocalBuild`)
 #
@@ -17,7 +18,7 @@ let
 
   isReserved = n: n == "lib" || n == "overlays" || n == "modules";
   isDerivation = p: isAttrs p && p ? type && p.type == "derivation";
-  isBuildable = p: !(p.meta.broken or false) && p.meta.license.free or true;
+  isBuildable = p: !(p.meta.broken or false) && p.meta.license.free or true && !(p.meta.experimental or false);
   isCacheable = p: !(p.preferLocalBuild or false);
   shouldRecurseForDerivations = p: isAttrs p && p.recurseForDerivations or false;
 
