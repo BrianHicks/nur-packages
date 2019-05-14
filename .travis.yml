@@ -8,7 +8,7 @@ os:
 
 env:
   global:
-    - CACHIX_CACHE=
+    - CACHIX_CACHE=brianhicks-nur
     - NUR_REPO=<YOUR_NUR_REPO_NAME_HERE>
   matrix:
     - NIX_CHANNEL=https://nixos.org/channels/nixpkgs-unstable
