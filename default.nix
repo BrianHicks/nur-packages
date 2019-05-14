@@ -15,4 +15,6 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   devd = pkgs.callPackage ./pkgs/devd { };
+
+  lorri = pkgs.callPackage ./pkgs/lorri.nix { };
 }
