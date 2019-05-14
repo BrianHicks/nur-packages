@@ -17,10 +17,16 @@ env:
 
 install:
  - nix --version
- - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then echo "trusted-users = root $USER" | sudo tee -a /etc/nix/nix.conf && sudo pkill nix-daemon; fi
  - if [ -n "${CACHIX_CACHE}" ]; then travis_retry nix-channel --update; fi
  - if [ -n "${CACHIX_CACHE}" ]; then nix-env -iA cachix -f https://cachix.org/api/v1/install; fi
- - if [ -n "${CACHIX_CACHE}" ]; then cachix use "${CACHIX_CACHE}"; fi
+ - |
+   if [ -n "${CACHIX_CACHE}" ]; then
+     if [ "${TRAVIS_OS_NAME}" = "osx" ]; then
+       sudo cachix use "${CACHIX_CACHE}"
+     else
+       cachix use "${CACHIX_CACHE}"
+     fi
+   fi
  - nix-channel --add "${NIX_CHANNEL}" nixpkgs
  - travis_retry nix-channel --update
 
