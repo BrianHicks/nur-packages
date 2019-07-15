@@ -17,4 +17,6 @@
   devd = pkgs.callPackage ./pkgs/devd { };
 
   lorri = pkgs.callPackage ./pkgs/lorri.nix { };
+
+  elm-language-server = pkgs.callPackage ./pkgs/elm-language-server { };
 }
