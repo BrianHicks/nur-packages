@@ -1,0 +1,32 @@
+diff --git a/out/util/rebuilder.js b/out/util/rebuilder.js
+index d201c97..08b2080 100644
+--- a/out/util/rebuilder.js
++++ b/out/util/rebuilder.js
+@@ -7,6 +7,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
+     return result;
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
++const fs = __importStar(require("fs"));
+ const path = __importStar(require("path"));
+ const prebuildInstall = __importStar(require("prebuild-install"));
+ function packageToGithubRepo(name) {
+@@ -34,8 +35,17 @@ function fetchPrebuild(name, treeSitterRepo, console, runtime) {
+     // tslint:disable-next-line: no-console
+     console.info(`Downloading (or using local cache for) ${url}`);
+     return new Promise((res, rej) => {
+-        prebuildInstall.download(url, { pkg, path: pkgRoot }, (err) => {
+-            err ? rej(err) : res();
++        // try to download+unpack the definition files only if they aren't already
++        fs.access(`${pkgRoot}/build/Release`, fs.constants.F_OK, (accessErr) => {
++            if (!accessErr) {
++                return res();
++            }
++            if (accessErr.code !== "ENOENT") {
++                return rej(accessErr);
++            }
++            prebuildInstall.download(url, { pkg, path: pkgRoot }, (err) => {
++                err ? rej(err) : res();
++            });
+         });
+     });
+ }

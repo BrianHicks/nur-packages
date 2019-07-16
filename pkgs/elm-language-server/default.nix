@@ -29,6 +29,10 @@ in
     (attrs: attrs // {
       name = "elm-language-server";
       preRebuild = ''
+        # patching here instead of in the `patches` attr because we need to
+        # patch the compiled output instead of the typescript source files.
+        patch -p1 < ${./lazy-unpacking.patch}
+
         ln -s ${node-tree-sitter} node_modules/tree-sitter/${node-tree-sitter-filename}
         ln -s ${tree-sitter-elm} node_modules/tree-sitter-elm/${tree-sitter-elm-filename}
       '';
