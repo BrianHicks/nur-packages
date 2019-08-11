@@ -1,0 +1,14 @@
+--- a/out/server.js	1969-12-31 18:00:01.000000000 -0600
++++ b/out/server.js	1969-12-31 18:00:01.000000000 -0600
+@@ -57,8 +57,9 @@
+         const elmWorkspaceFallback = 
+         // Add a trailing slash if not present
+         this.params.rootUri && this.params.rootUri.replace(/\/?$/, "/");
+-        const elmWorkspace = vscode_uri_1.URI.parse(this.params.initializationOptions.elmWorkspace || elmWorkspaceFallback);
+-        const settings = new settings_1.Settings(this.params.capabilities, this.params.initializationOptions);
++        const initializationOptions = this.params.initializationOptions || {};
++        const elmWorkspace = vscode_uri_1.URI.parse(initializationOptions.elmWorkspace || elmWorkspaceFallback);
++        const settings = new settings_1.Settings(this.params.capabilities, initializationOptions);
+         connection.onInitialized(() => __awaiter(this, void 0, void 0, function* () {
+             if (elmWorkspace) {
+                 this.connection.console.info(`initializing - folder: "${elmWorkspace}"`);

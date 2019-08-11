@@ -18,5 +18,5 @@
 
   lorri = pkgs.callPackage ./pkgs/lorri.nix { };
 
-  elm-language-server = (pkgs.callPackage ./pkgs/elm-language-server { })."@elm-tooling/elm-language-server-1.2.2";
+  elm-language-server = pkgs.callPackage ./pkgs/elm-language-server { };
 }
