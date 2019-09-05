@@ -2,5 +2,5 @@
 { pkgs ? import <nixpkgs> }:
 
 let nodePackages = import ./composition.nix { };
-in nodePackages."@elm-tooling/elm-language-server-1.3.2".overrideAttrs
+in nodePackages."@elm-tooling/elm-language-server-1.4.1".overrideAttrs
 (attrs: attrs // { name = "elm-language-server"; })
