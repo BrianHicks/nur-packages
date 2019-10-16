@@ -6,7 +6,7 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> { } }:
 
 {
   # The `lib`, `modules`, and `overlay` names are special
@@ -19,4 +19,6 @@
   lorri = pkgs.callPackage ./pkgs/lorri.nix { };
 
   elm-language-server = pkgs.callPackage ./pkgs/elm-language-server { };
+
+  tea = pkgs.callPackage ./pkgs/tea { };
 }
