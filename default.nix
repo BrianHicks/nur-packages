@@ -19,6 +19,4 @@
   lorri = pkgs.callPackage ./pkgs/lorri.nix { };
 
   elm-language-server = pkgs.callPackage ./pkgs/elm-language-server { };
-
-  tea = pkgs.callPackage ./pkgs/tea { };
 }
