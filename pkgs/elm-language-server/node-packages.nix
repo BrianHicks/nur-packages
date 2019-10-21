@@ -1943,13 +1943,13 @@ let
   };
 in
 {
-  "@elm-tooling/elm-language-server-1.4.2" = nodeEnv.buildNodePackage {
+  "@elm-tooling/elm-language-server-1.4.3" = nodeEnv.buildNodePackage {
     name = "_at_elm-tooling_slash_elm-language-server";
     packageName = "@elm-tooling/elm-language-server";
-    version = "1.4.2";
+    version = "1.4.3";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@elm-tooling/elm-language-server/-/elm-language-server-1.4.2.tgz";
-      sha512 = "66FzEfP1Pan3Hw417rRVTXFtYcKV6EB8HwEQ6uQcnP1ggpTqV/7D8Mp90Y3JzsDHyIwm7BlsksxY6K+dEOgXqg==";
+      url = "https://registry.npmjs.org/@elm-tooling/elm-language-server/-/elm-language-server-1.4.3.tgz";
+      sha512 = "UU8u3wHc1pDQUwupJyeKe34keE/m3SjWO22GCgM94pkFdHiGYuAsesQRX3olKycCsV1ZG7xwAD4eGvoUQmNTvQ==";
     };
     dependencies = [
       sources."@nodelib/fs.scandir-2.1.3"
